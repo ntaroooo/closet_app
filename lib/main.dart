@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/home-page.dart';
+import 'package:flutter_app/sign-up-state.dart';
 
 import 'package:flutter_app/sign_up.dart';
 
@@ -114,11 +115,11 @@ class MyLogin extends StatelessWidget{
 
                Container(
                  child: InkWell(
-                   child: Text("creat your new account"),
+                   child: Text("create your new account"),
                    onTap: (){
                      Navigator.push(
                        context,
-                       MaterialPageRoute(builder: (context) => SignUp())
+                       MaterialPageRoute(builder: (context) => MySignUp2())
                      );
                    },
                  ),
