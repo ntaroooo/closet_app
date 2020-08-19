@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/image-pick.dart';
 
 
-class MyHomePage extends StatelessWidget {
+class MyAddClose extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

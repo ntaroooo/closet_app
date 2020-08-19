@@ -1,8 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/add-clothing.dart';
+import 'package:flutter_app/home-page.dart';
 import 'package:flutter_app/sign-up-state.dart';
 
 
+void main() {
+  runApp(SignIn());
+}
 
 
 
@@ -38,30 +43,64 @@ class _MySignInState extends State<MySignIn2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/sea.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+
+
         child: Container(
-          padding: EdgeInsets.all(32),
+
           child: Column(
             children: <Widget>[
 
-              TextFormField(
-                decoration: InputDecoration(labelText: "メールアドレス"),
-                onChanged: (String value) {
-                  setState(() {
-                    loginUserEmail = value;
-                  });
-                },
+              Padding(
+                padding: const EdgeInsets.only(top: 150.0, right: 50.0, bottom: 30.0, left: 50.0),
+
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "E-mail",
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white,
+
+                  ),
+                  onChanged: (String value) {
+                    setState(() {
+                      loginUserEmail = value;
+                    });
+                  },
+                ),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: "パスワード"),
-                obscureText: true,
-                onChanged: (String value) {
-                  setState(() {
-                    loginUserPassword = value;
-                  });
-                },
+
+              Padding(
+                padding: const EdgeInsets.all(50.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "Password",
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white,
+
+                  ),
+                  obscureText: true,
+                  onChanged: (String value) {
+                    setState(() {
+                      loginUserPassword = value;
+                    });
+                  },
+                ),
               ),
               RaisedButton(
+                child: Text('Sign In'),
+                color: Colors.white,
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0))
+                ),
                 onPressed: () async {
                   try {
                     // メール/パスワードでログイン
@@ -74,16 +113,28 @@ class _MySignInState extends State<MySignIn2> {
                     // ログインに成功した場合
                     final FirebaseUser user = result.user;
                     setState(() {
-                      infoText = "ログインOK：${user.email}";
+                      infoText = "Success：${user.email}";
                     });
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyHomePage())
+                    );
+
+
+
                   } catch (e) {
                     // ログインに失敗した場合
                     setState(() {
-                      infoText = "ログインNG：${e.message}";
-                    });
+                      infoText = "failed：${e.message}";
+                      });
                   }
-                },
-                child: Text("ログイン"),
+
+
+
+                }
+
+
               ),
 
               Container(

@@ -45,7 +45,7 @@ class MyHome extends StatelessWidget{
                     onTap: (){
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyAddClothing())
+                          MaterialPageRoute(builder: (context) => MyAddClose())
                       );
 
                     },

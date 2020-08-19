@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/sign-in.dart';
 
 class SignUp extends StatelessWidget {
   @override
@@ -98,6 +99,12 @@ class _MySignState extends State<MySignUp2> {
                     setState(() {
                       infoText = "Success：${user.email}";
                     });
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MySignIn2()),
+                    );
+
                   } catch (e) {
                     // 登録に失敗した場合
                     setState(() {

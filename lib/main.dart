@@ -6,9 +6,11 @@ import 'package:flutter_app/sign-up-state.dart';
 import 'package:flutter_app/sign_up.dart';
 
 
-void main() {
+/*void main() {
   runApp(MyApp());
-}
+}*/
+
+//no use
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -45,86 +47,86 @@ class MyLogin extends StatelessWidget{
            ),
 
 
-           child: Form(
-            key: _form,
-            child: Column(
-             children: <Widget>[
+               child: Form(
+                key: _form,
+                child: Column(
+                 children: <Widget>[
 
 
 
 
 
-               Padding(
-                 padding: const EdgeInsets.only(top: 150.0, right: 50.0, bottom: 30.0, left: 50.0),
+                   Padding(
+                     padding: const EdgeInsets.only(top: 150.0, right: 50.0, bottom: 30.0, left: 50.0),
 
-                 child: TextFormField(
-                   focusNode: _passwordFocusNode,
+                     child: TextFormField(
+                       focusNode: _passwordFocusNode,
 
-                   decoration: InputDecoration(
-                       labelText: 'ID',
-                       border: OutlineInputBorder(),
-                       filled: true,
-                       fillColor: Colors.white,
+                       decoration: InputDecoration(
+                           labelText: 'ID',
+                           border: OutlineInputBorder(),
+                           filled: true,
+                           fillColor: Colors.white,
 
 
+                       ),
+
+                       onSaved: (value){
+                         _id = value;
+                       },
+                     ),
                    ),
 
-                   onSaved: (value){
-                     _id = value;
-                   },
-                 ),
-               ),
-
-               Padding(
-                 padding: const EdgeInsets.all(50.0),
-                 child: TextFormField(
-                   focusNode: _passwordFocusNode,
-                   style: TextStyle(
-                       backgroundColor: Colors.white
+                   Padding(
+                     padding: const EdgeInsets.all(50.0),
+                     child: TextFormField(
+                       focusNode: _passwordFocusNode,
+                       style: TextStyle(
+                           backgroundColor: Colors.white
+                       ),
+                       decoration: InputDecoration(
+                           labelText: 'Password',
+                           border: OutlineInputBorder(),
+                           filled: true,
+                           fillColor: Colors.white,
+                       ),
+                       onSaved: (value){
+                         _password = value;
+                       },
+                     ),
                    ),
-                   decoration: InputDecoration(
-                       labelText: 'Password',
-                       border: OutlineInputBorder(),
-                       filled: true,
-                       fillColor: Colors.white,
+                   FlatButton(
+                     child: Text('Sign In'),
+                     color: Colors.white,
+                     shape: OutlineInputBorder(
+                       borderRadius: BorderRadius.all(Radius.circular(10.0))
+                     ),
+                     onPressed: (){
+
+                       _form.currentState.save();
+                       print(_id);
+                       print(_password);
+                       Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => MyHomePage())
+                       );
+
+                     },
+                     splashColor: Colors.green,
                    ),
-                   onSaved: (value){
-                     _password = value;
-                   },
-                 ),
-               ),
-               FlatButton(
-                 child: Text('Sign In'),
-                 color: Colors.white,
-                 shape: OutlineInputBorder(
-                   borderRadius: BorderRadius.all(Radius.circular(10.0))
-                 ),
-                 onPressed: (){
 
-                   _form.currentState.save();
-                   print(_id);
-                   print(_password);
-                   Navigator.push(
-                       context,
-                       MaterialPageRoute(builder: (context) => MyHomePage())
-                   );
-
-                 },
-                 splashColor: Colors.green,
-               ),
-
-               Container(
-                 child: InkWell(
-                   child: Text("create your new account"),
-                   onTap: (){
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(builder: (context) => MySignUp2())
-                     );
-                   },
-                 ),
-                 //child: Text('creat your new account'),
-               ),
+                   Container(
+                     child: InkWell(
+                       child: Text("create your new account"),
+                       onTap: (){
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => MySignUp2())
+                         );
+                       },
+                     ),
+                     //child: Text('creat your new account'),
+                   ),
 
 
 
